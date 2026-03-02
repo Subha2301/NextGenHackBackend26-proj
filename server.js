@@ -11,8 +11,11 @@ const app = express();
 connectDB();
 
 // Middlewares
-app.use(cors({ origin: "https://splendorous-cassata-688a6a.netlify.app" }));
-// app.use(cors());
+app.use(cors({
+  origin: "https://splendorous-cassata-688a6a.netlify.app",
+  credentials: true
+}));
+
 app.use(express.json());
 
 // Routes
