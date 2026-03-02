@@ -11,7 +11,8 @@ const app = express();
 connectDB();
 
 // Middlewares
-app.use(cors());
+app.use(cors({ origin: "https://bucolic-piroshki-e3031e.netlify.app" }));
+// app.use(cors());
 app.use(express.json());
 
 // Routes
