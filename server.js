@@ -11,7 +11,7 @@ const app = express();
 connectDB();
 
 // Middlewares
-app.use(cors({ origin: "https://bucolic-piroshki-e3031e.netlify.app" }));
+app.use(cors({ origin: "https://splendorous-cassata-688a6a.netlify.app" }));
 // app.use(cors());
 app.use(express.json());
 
