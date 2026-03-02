@@ -4,6 +4,9 @@ const Complaint = require("../models/Complaint");
 //  Create Complaint
 exports.createComplaint = async (req, res) => {
   try {
+       console.log("REQ BODY:", req.body);
+      console.log("USER ID:", req.user?.id);
+      
     const complaint = await Complaint.create({
       ...req.body,
       userId: req.user.id
