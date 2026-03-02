@@ -2,18 +2,19 @@ const express = require("express");
 const router = express.Router();
 const controller = require("../controllers/complaintController");
 const auth = require("../middleware/authMiddleware");
+const { authorize } = require("../middleware/authorize"); // import authorize
 
-// 🔥 Create Complaint (Logged-in user only)
+// Create Complaint (User)
 router.post("/", auth, controller.createComplaint);
 
-// 🔥 Get Logged-in User Complaints
+// Get My Complaints (User)
 router.get("/my", auth, controller.getMyComplaints);
 
-// 🔥 Get All Complaints (Admin Page)
-router.get("/", auth, controller.getPublicComplaints);
+// Get All Complaints (Admin)
+router.get("/", auth, authorize("ADMIN"), controller.getPublicComplaints);
 
-// 🔥 Update Status (Admin)
-router.put("/:id", auth, controller.updateStatus);
+// Update Status (Admin)
+router.put("/:id", auth, authorize("ADMIN"), controller.updateStatus);
 
 module.exports = router;
 
